@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const enPosts = allPosts.filter(p => p.data.lang !== 'bn');
+const bnPosts = allPosts.filter(p => p.data.lang === 'bn');
+---
+<BaseLayout title="Blog" description="Writing on sustainability, energy, and engineering by Mohammad Iftekher Ebne Jalal.">
+  <div class="blog-page">
+    <div class="blog-hero">
+      <span class="section-label">Writing</span>
+      <h1>Blog</h1>
+      <p>Thoughts on sustainability, clean energy, industrial safety, and engineering in Bangladesh and beyond.</p>
+    </div>
+
+    <div class="blog-content">
+      <div class="lang-section">
+        <h2 class="lang-title">English</h2>
+        <div class="post-list">
+          {enPosts.length === 0 && <p class="empty">No posts yet.</p>}
+          {enPosts.map(post => (
+            <a href={`/blog/${post.slug}`} class="post-row">
+              <span class="post-date">
+                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </span>
+              <span class="post-title">{post.data.title}</span>
+              <span class="post-desc">{post.data.description}</span>
+              <span class="post-arrow">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {bnPosts.length > 0 && (
+        <div class="lang-section">
+          <h2 class="lang-title">বাংলা</h2>
+          <div class="post-list">
+            {bnPosts.map(post => (
+              <a href={`/blog/${post.slug}`} class="post-row">
+                <span class="post-date">
+                  {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                </span>
+                <span class="post-title">{post.data.title}</span>
+                <span class="post-desc">{post.data.description}</span>
+                <span class="post-arrow">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.blog-page { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem; }
+.blog-hero {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+.blog-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0.5rem 0 1rem;
+}
+.blog-hero p { font-size: 0.85rem; color: var(--muted); max-width: 480px; line-height: 1.8; }
+.lang-section { margin-bottom: 3rem; }
+.lang-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+}
+.post-list { display: flex; flex-direction: column; }
+.post-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.post-row:hover .post-title { color: var(--accent); }
+.post-row:hover .post-arrow { color: var(--accent); transform: translateX(4px); }
+.post-date { font-size: 0.65rem; letter-spacing: 0.06em; color: var(--muted); }
+.post-title { font-family: var(--font-display); font-size: 1rem; font-weight: 400; transition: color 0.2s; }
+.post-desc { font-size: 0.73rem; color: var(--muted); line-height: 1.5; }
+.post-arrow { transition: transform 0.2s, color 0.2s; color: var(--muted); font-size: 0.85rem; }
+.empty { font-size: 0.8rem; color: var(--muted); padding: 1rem 0; }
+
+@media (max-width: 768px) {
+  .blog-page { padding: 4rem 1.5rem; }
+  .post-row { grid-template-columns: 1fr; gap: 0.3rem; }
+  .post-arrow { display: none; }
+}
+</style>
