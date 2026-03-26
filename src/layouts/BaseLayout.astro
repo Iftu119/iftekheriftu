@@ -3,11 +3,12 @@ interface Props {
   title?: string;
   description?: string;
 }
-const { 
-  title = "Mohammad Iftekher Ebne Jalal", 
-  description = "EHS Executive at Unilever Bangladesh. Engineer, researcher, and sustainability advocate." 
+const {
+  title = "Mohammad Iftekher Ebne Jalal",
+  description = "EHS Executive at Unilever Bangladesh. Engineer, researcher, and sustainability advocate."
 } = Astro.props;
 const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} — Iftu`;
+const base = "/iftekheriftu";
 ---
 <!doctype html>
 <html lang="en">
@@ -20,31 +21,31 @@ const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} �
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://iftekheriftu.com" />
   <title>{fullTitle}</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
   <nav>
-    <a href="/" class="nav-logo">Iftu</a>
+    <a href={`${base}/`} class="nav-logo">Iftu</a>
     <ul>
-      <li><a href="/#experience">Experience</a></li>
-      <li><a href="/#awards">Awards</a></li>
-      <li><a href="/#research">Research</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/#contact" class="nav-cta">Contact</a></li>
+      <li><a href={`${base}/#experience`}>Experience</a></li>
+      <li><a href={`${base}/#awards`}>Awards</a></li>
+      <li><a href={`${base}/#research`}>Research</a></li>
+      <li><a href={`${base}/blog`}>Blog</a></li>
+      <li><a href={`${base}/#contact`} class="nav-cta">Contact</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/#experience" class="mobile-link">Experience</a>
-    <a href="/#awards" class="mobile-link">Awards</a>
-    <a href="/#research" class="mobile-link">Research</a>
-    <a href="/blog" class="mobile-link">Blog</a>
-    <a href="/#contact" class="mobile-link">Contact</a>
+    <a href={`${base}/#experience`} class="mobile-link">Experience</a>
+    <a href={`${base}/#awards`} class="mobile-link">Awards</a>
+    <a href={`${base}/#research`} class="mobile-link">Research</a>
+    <a href={`${base}/blog`} class="mobile-link">Blog</a>
+    <a href={`${base}/#contact`} class="mobile-link">Contact</a>
   </div>
 
   <main>
@@ -92,6 +93,7 @@ const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} �
     --muted: #888880;
     --accent: #c8f560;
     --accent2: #9fd43a;
+    --accent3: #a8e060;
     --border: #2a2a2a;
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-mono: 'JetBrains Mono', 'Courier New', monospace;
@@ -100,18 +102,47 @@ const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} �
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0);
+    background-size: 28px 28px;
     color: var(--text);
     font-family: var(--font-mono);
     font-size: 14px;
     font-weight: 300;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    position: relative;
   }
+
+  /* Subtle corner glow blobs */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(200, 245, 96, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(200, 245, 96, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  main, nav, footer { position: relative; z-index: 1; }
 
   ::selection { background: var(--accent); color: var(--bg); }
 
-  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -120,7 +151,7 @@ const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} �
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 2.5rem;
-    background: rgba(8,8,8,0.85);
+    background: rgba(8,8,8,0.88);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
@@ -132,12 +163,7 @@ const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} �
     text-decoration: none;
     letter-spacing: 0.02em;
   }
-  nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-  }
+  nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
   nav ul a {
     color: var(--muted);
     text-decoration: none;
@@ -165,11 +191,8 @@ const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} �
     padding: 4px;
   }
   .nav-toggle span {
-    display: block;
-    width: 22px;
-    height: 1.5px;
-    background: var(--text);
-    transition: all 0.3s;
+    display: block; width: 22px; height: 1.5px;
+    background: var(--text); transition: all 0.3s;
   }
   .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
   .nav-toggle.active span:nth-child(2) { opacity: 0; }
@@ -188,11 +211,8 @@ const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} �
   }
   .mobile-menu.open { display: flex; }
   .mobile-link {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
   }
   .mobile-link:hover { color: var(--accent); }
 
@@ -201,57 +221,38 @@ const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} �
     .nav-toggle { display: flex; }
   }
 
-  /* ── MAIN ── */
   main { padding-top: 62px; }
 
-  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
     padding: 2rem 2.5rem;
     margin-top: 6rem;
+    background: rgba(8,8,8,0.6);
   }
   .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem; flex-wrap: wrap;
   }
   .footer-name { font-family: var(--font-display); font-size: 1rem; color: var(--muted); }
   .footer-copy { font-size: 0.7rem; color: var(--border); }
   .footer-links { display: flex; gap: 1.5rem; }
   .footer-links a {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
   }
   .footer-links a:hover { color: var(--accent); }
 
-  /* ── SHARED UTILITIES ── */
   .section-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 0.75rem;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); display: block; margin-bottom: 0.75rem;
   }
   .section-num {
     font-family: var(--font-display);
     font-size: clamp(5rem, 12vw, 10rem);
-    font-weight: 300;
-    color: var(--bg3);
-    line-height: 1;
-    position: absolute;
-    right: 0;
-    top: -1rem;
-    pointer-events: none;
-    user-select: none;
+    font-weight: 300; color: var(--bg3); line-height: 1;
+    position: absolute; right: 0; top: -1rem;
+    pointer-events: none; user-select: none;
   }
   a { color: var(--accent); }
 </style>
