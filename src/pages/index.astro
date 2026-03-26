@@ -1,0 +1,619 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
+---
+<BaseLayout>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Executive, Safety Health & Environment · Unilever Bangladesh
+    </div>
+    <h1 class="hero-name">
+      Mohammad<br/>
+      <em>Iftekher</em><br/>
+      Ebne Jalal
+    </h1>
+    <p class="hero-sub">
+      Engineer turned sustainability professional. I work at the intersection of 
+      industrial safety, clean energy advocacy, and applied research — pushing 
+      systems toward resilience, one project at a time.
+    </p>
+    <div class="hero-actions">
+      <a href="/#experience" class="btn-primary">View Work</a>
+      <a href="/#research" class="btn-ghost">Publications</a>
+    </div>
+  </div>
+  <div class="hero-links">
+    <a href="https://linkedin.com/in/miej-iftu" target="_blank" rel="noopener">LI</a>
+    <a href="https://github.com/iftu119" target="_blank" rel="noopener">GH</a>
+    <a href="https://researchgate.net/profile/Mohammad-Iftekher-Jalal" target="_blank" rel="noopener">RG</a>
+    <a href="https://orcid.org/0000-0003-2907-1825" target="_blank" rel="noopener">OR</a>
+    <a href="https://youtube.com/channel/UCw5o4rX6wTnihDhWIq-MkIw" target="_blank" rel="noopener">YT</a>
+  </div>
+  <div class="hero-scroll">↓ scroll</div>
+</section>
+
+<!-- ── UPDATES ── -->
+<section class="updates-bar">
+  <span class="updates-label">Latest —</span>
+  <span class="updates-text">Started as Executive, SHE at Unilever Bangladesh Limited · Completed ULIP Internship at Kalurghat Factory · Honda Y-E-S Award 2022 recipient</span>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section class="section" id="experience">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">01 · Experience</span>
+      <h2 class="section-title">Where I've Worked</h2>
+      <span class="section-num">01</span>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-date">2023 — Present</span>
+          <span class="tl-tag">Full-time</span>
+        </div>
+        <div class="tl-content">
+          <h3>Executive, Safety Health & Environment</h3>
+          <span class="tl-org">Unilever Bangladesh Limited</span>
+          <p>Managing SHE compliance, risk assessment, and sustainability initiatives at one of Bangladesh's largest FMCG operations.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-date">2022 — 2023</span>
+          <span class="tl-tag">Internship</span>
+        </div>
+        <div class="tl-content">
+          <h3>ULIP Intern</h3>
+          <span class="tl-org">Unilever Bangladesh — Kalurghat Factory</span>
+          <p>Unilever Leadership Internship Programme. Hands-on factory operations exposure with safety and sustainability focus.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-date">2023</span>
+          <span class="tl-tag">Project</span>
+        </div>
+        <div class="tl-content">
+          <h3>Project Coordinator</h3>
+          <span class="tl-org">Green Lead · Unplastic Bangladesh 2023</span>
+          <p>Led coordination for Unplastic Bangladesh 2023 in partnership with Sonali Bioplastics — a national campaign to reduce single-use plastic adoption.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-date">2020 — 2022</span>
+          <span class="tl-tag">Volunteer</span>
+        </div>
+        <div class="tl-content">
+          <h3>Microsoft Student Partner</h3>
+          <span class="tl-org">Microsoft</span>
+          <p>Campus ambassador driving developer community engagement and Azure cloud skills at CUET.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-date">2021</span>
+          <span class="tl-tag">Leadership</span>
+        </div>
+        <div class="tl-content">
+          <h3>Operations Manager</h3>
+          <span class="tl-org">Green Lead</span>
+          <p>Managed day-to-day operations of a youth-led sustainability NGO focused on environmental action in Bangladesh.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AWARDS ── -->
+<section class="section section-alt" id="awards">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">02 · Recognition</span>
+      <h2 class="section-title">Awards & Honours</h2>
+      <span class="section-num">02</span>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card featured">
+        <span class="award-year">2022</span>
+        <h3>Honda Young Engineer & Scientist Award</h3>
+        <p>Awarded by the Honda Foundation, Japan — recognizing young engineers and scientists contributing to a symbiotic society.</p>
+        <a href="https://www.hondafoundation.jp/yes/index_en/325#midasi" target="_blank" rel="noopener" class="award-link">View Award →</a>
+      </div>
+      <div class="award-card featured">
+        <span class="award-year">2023</span>
+        <h3>Championship — Climate Justice Energy Competition</h3>
+        <p>Winner of The Daily Star & Action Aid competition with the project "Net Metering Solar Power for Residential Consumers of Bangladesh."</p>
+        <a href="https://www.thedailystar.net/supplements-0/news/climate-justice-idea-competition-2023-3379696" target="_blank" rel="noopener" class="award-link">View Coverage →</a>
+      </div>
+      <div class="award-card">
+        <span class="award-year">2022</span>
+        <h3>Global Finalist — Huawei Tech4Good</h3>
+        <p>Represented Bangladesh as a global finalist at Huawei's Tech4Good competition.</p>
+        <a href="https://www.thedailystar.net/business/news/bangladeshi-team-compete-huaweis-tech4good-final-3211896" target="_blank" rel="noopener" class="award-link">View Coverage →</a>
+      </div>
+      <div class="award-card">
+        <span class="award-year">2022</span>
+        <h3>Top 9 — Huawei Seeds for the Future</h3>
+        <p>Selected among the top 9 ICT talents nationally; represented Bangladesh in the SFTF programme in Thailand. Won with project "Draining Urban Flood."</p>
+      </div>
+      <div class="award-card">
+        <span class="award-year">2020</span>
+        <h3>Hult Prize Regional Finalist</h3>
+        <p>Regional finalist at Hult Prize 2020, Kuala Lumpur — the world's largest student social enterprise competition.</p>
+      </div>
+      <div class="award-card">
+        <span class="award-year">2019</span>
+        <h3>Alumni — Bangladesh-China Foundation for Future</h3>
+        <p>Bangladeshi delegate for the bilateral youth exchange programme between Bangladesh and China.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESEARCH ── -->
+<section class="section" id="research">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">03 · Research</span>
+      <h2 class="section-title">Publications</h2>
+      <span class="section-num">03</span>
+    </div>
+    <div class="pub-list">
+      <div class="pub-item">
+        <div class="pub-meta">
+          <span class="pub-journal">ACS Applied Electronic Materials</span>
+          <span class="pub-year">2022</span>
+        </div>
+        <h3 class="pub-title">Published Research Article</h3>
+        <p class="pub-abstract">
+          Peer-reviewed publication in ACS Applied Electronic Materials — a high-impact journal from the American Chemical Society covering electronic, optical, and magnetic materials.
+        </p>
+        <div class="pub-links">
+          <a href="https://pubs.acs.org/doi/10.1021/acsaelm.2c00069" target="_blank" rel="noopener" class="pub-doi">DOI: 10.1021/acsaelm.2c00069 →</a>
+          <a href="https://researchgate.net/profile/Mohammad-Iftekher-Jalal" target="_blank" rel="noopener" class="pub-rg">ResearchGate →</a>
+          <a href="https://orcid.org/0000-0003-2907-1825" target="_blank" rel="noopener" class="pub-orcid">ORCID →</a>
+        </div>
+      </div>
+    </div>
+    <p class="pub-note">
+      Full publication list available on <a href="https://researchgate.net/profile/Mohammad-Iftekher-Jalal" target="_blank" rel="noopener">ResearchGate</a> and <a href="https://orcid.org/0000-0003-2907-1825" target="_blank" rel="noopener">ORCID</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ── BLOG PREVIEW ── -->
+<section class="section section-alt" id="blog-preview">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">04 · Writing</span>
+      <h2 class="section-title">From the Blog</h2>
+      <span class="section-num">04</span>
+    </div>
+    <div class="blog-preview-grid">
+      {posts.map(post => (
+        <a href={`/blog/${post.slug}`} class="blog-card">
+          <span class="blog-card-date">
+            {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+          </span>
+          <h3>{post.data.title}</h3>
+          <p>{post.data.description}</p>
+          <span class="blog-card-read">Read →</span>
+        </a>
+      ))}
+    </div>
+    <a href="/blog" class="all-posts-link">All posts →</a>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section" id="contact">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">05 · Contact</span>
+      <h2 class="section-title">Get in Touch</h2>
+      <span class="section-num">05</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p>Open to research collaborations, speaking opportunities, and discussions on sustainability, industrial safety, and clean energy transition in Bangladesh and beyond.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://linkedin.com/in/miej-iftu" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://forms.gle/KXRRxLcTjC3yQcsW7" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-label">Leave a Message</span>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://facebook.com/iftu119" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-label">Facebook</span>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 2.5rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s ease forwards;
+}
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.4s ease forwards;
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-sub {
+  max-width: 520px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s ease forwards;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.8s ease forwards;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.hero-links {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+.hero-links::before {
+  content: '';
+  width: 1px; height: 60px;
+  background: var(--border);
+  margin-bottom: 0.5rem;
+}
+.hero-links a {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  transition: color 0.2s;
+}
+.hero-links a:hover { color: var(--accent); }
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 2.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--border);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── UPDATES BAR ── */
+.updates-bar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 2.5rem;
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+  font-size: 0.7rem;
+}
+.updates-label {
+  color: var(--accent);
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+}
+.updates-text { color: var(--muted); }
+
+/* ── SECTIONS ── */
+.section { padding: 6rem 2.5rem; }
+.section-alt { background: var(--bg2); }
+.section-wrap { max-width: 1100px; margin: 0 auto; }
+.section-header {
+  position: relative;
+  margin-bottom: 3.5rem;
+  overflow: hidden;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ── TIMELINE ── */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.timeline-item:last-child { border-bottom: none; }
+.tl-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.15rem;
+}
+.tl-date {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.tl-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.15rem 0.5rem;
+  width: fit-content;
+}
+.tl-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+.tl-org {
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.tl-content p { font-size: 0.8rem; color: var(--muted); max-width: 540px; }
+
+/* ── AWARDS ── */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5px;
+  background: var(--border);
+}
+.award-card {
+  background: var(--bg2);
+  padding: 2rem;
+  position: relative;
+  transition: background 0.2s;
+}
+.award-card:hover { background: var(--bg3); }
+.award-card.featured { background: var(--bg3); }
+.award-card.featured::before {
+  content: '★';
+  position: absolute;
+  top: 1rem; right: 1rem;
+  color: var(--accent);
+  font-size: 0.7rem;
+}
+.award-year {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.award-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+.award-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.award-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.award-link:hover { opacity: 0.7; }
+
+/* ── RESEARCH ── */
+.pub-list { display: flex; flex-direction: column; gap: 0; }
+.pub-item {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.pub-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.pub-journal {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.2rem 0.6rem;
+}
+.pub-year {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.pub-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+}
+.pub-abstract { font-size: 0.8rem; color: var(--muted); max-width: 600px; margin-bottom: 1.25rem; }
+.pub-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.pub-doi, .pub-rg, .pub-orcid {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.pub-doi:hover, .pub-rg:hover, .pub-orcid:hover { color: var(--accent); }
+.pub-note {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ── BLOG PREVIEW ── */
+.blog-preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5px; background: var(--border); }
+.blog-card {
+  background: var(--bg);
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: background 0.2s;
+}
+.blog-card:hover { background: var(--bg3); }
+.blog-card-date { font-size: 0.65rem; letter-spacing: 0.1em; color: var(--muted); }
+.blog-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+.blog-card p { font-size: 0.78rem; color: var(--muted); flex: 1; line-height: 1.6; }
+.blog-card-read { font-size: 0.65rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-top: 0.5rem; }
+.all-posts-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.all-posts-link:hover { color: var(--accent); }
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.contact-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.8; max-width: 400px; }
+.contact-links { display: flex; flex-direction: column; }
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.contact-item:hover { color: var(--accent); }
+.contact-label { font-size: 0.8rem; letter-spacing: 0.05em; }
+.contact-arrow { color: var(--accent); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { padding: 5rem 1.5rem 3rem; }
+  .hero-links { display: none; }
+  .hero-scroll { display: none; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .section { padding: 4rem 1.5rem; }
+  .updates-bar { padding: 0.85rem 1.5rem; }
+}
+</style>

@@ -1,0 +1,257 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { 
+  title = "Mohammad Iftekher Ebne Jalal", 
+  description = "EHS Executive at Unilever Bangladesh. Engineer, researcher, and sustainability advocate." 
+} = Astro.props;
+const fullTitle = title === "Mohammad Iftekher Ebne Jalal" ? title : `${title} — Iftu`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://iftekheriftu.com" />
+  <title>{fullTitle}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">Iftu</a>
+    <ul>
+      <li><a href="/#experience">Experience</a></li>
+      <li><a href="/#awards">Awards</a></li>
+      <li><a href="/#research">Research</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/#experience" class="mobile-link">Experience</a>
+    <a href="/#awards" class="mobile-link">Awards</a>
+    <a href="/#research" class="mobile-link">Research</a>
+    <a href="/blog" class="mobile-link">Blog</a>
+    <a href="/#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Mohammad Iftekher Ebne Jalal</span>
+      <span class="footer-copy">© 2025</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/miej-iftu" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/iftu119" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://researchgate.net/profile/Mohammad-Iftekher-Jalal" target="_blank" rel="noopener">ResearchGate</a>
+        <a href="https://orcid.org/0000-0003-2907-1825" target="_blank" rel="noopener">ORCID</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('open');
+    toggle.classList.toggle('active');
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.remove('open');
+      toggle?.classList.remove('active');
+    });
+  });
+</script>
+
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080808;
+    --bg2: #111111;
+    --bg3: #181818;
+    --text: #f0ece4;
+    --muted: #888880;
+    --accent: #c8f560;
+    --accent2: #9fd43a;
+    --border: #2a2a2a;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+  }
+  nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--text); }
+  .nav-cta {
+    border: 1px solid var(--accent) !important;
+    color: var(--accent) !important;
+    padding: 0.4rem 1rem;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: var(--bg) !important; }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text);
+    transition: all 0.3s;
+  }
+  .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 62px; left: 0; right: 0;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    z-index: 99;
+    flex-direction: column;
+    padding: 1.5rem 2.5rem;
+    gap: 1.25rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .mobile-link:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .nav-toggle { display: flex; }
+  }
+
+  /* ── MAIN ── */
+  main { padding-top: 62px; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    margin-top: 6rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-name { font-family: var(--font-display); font-size: 1rem; color: var(--muted); }
+  .footer-copy { font-size: 0.7rem; color: var(--border); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── SHARED UTILITIES ── */
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .section-num {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 12vw, 10rem);
+    font-weight: 300;
+    color: var(--bg3);
+    line-height: 1;
+    position: absolute;
+    right: 0;
+    top: -1rem;
+    pointer-events: none;
+    user-select: none;
+  }
+  a { color: var(--accent); }
+</style>
