@@ -16,9 +16,8 @@ const posts = (await getCollection('blog'))
       Executive, Safety Health & Environment · Unilever Bangladesh
     </div>
     <h1 class="hero-name">
-      Mohammad<br/>
-      <em>Iftekher</em><br/>
-      Ebne Jalal
+      Mohammad <em class="name-iftekher">Iftekher</em><br/>
+      Ebne Jalal <em class="name-iftu">(Iftu)</em>
     </h1>
     <p class="hero-sub">
       Engineer turned sustainability professional. I work at the intersection of 
@@ -281,9 +280,9 @@ const posts = (await getCollection('blog'))
   opacity: 0;
   animation: fadeUp 0.8s 0.4s ease forwards;
 }
-.hero-name em {
-  font-style: italic;
-  color: var(--accent);
+.hero-name em { font-style: italic; }
+.name-iftekher { color: var(--accent); }
+.name-iftu { color: var(--accent3); font-size: 0.75em; }
 }
 .hero-sub {
   max-width: 520px;
