@@ -612,7 +612,7 @@ const posts = (await getCollection('blog'))
   display: flex;
   align-items: center;
   overflow: hidden;
-  gap: 0;
+  white-space: nowrap;
 }
 .updates-label {
   color: var(--accent);
@@ -622,28 +622,31 @@ const posts = (await getCollection('blog'))
   letter-spacing: 0.1em;
   padding: 0 1.5rem;
   border-right: 1px solid var(--border);
-  margin-right: 1.5rem;
+  margin-right: 0;
   flex-shrink: 0;
+  z-index: 1;
 }
 .updates-track-wrap {
   overflow: hidden;
   flex: 1;
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  min-width: 0;
+  mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
 }
 .updates-track {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 1.25rem;
-  width: max-content;
   animation: ticker 30s linear infinite;
   font-size: 0.7rem;
   color: var(--muted);
   letter-spacing: 0.04em;
+  white-space: nowrap;
+  will-change: transform;
 }
 .updates-track:hover { animation-play-state: paused; }
 .updates-track span { white-space: nowrap; }
-.updates-track .sep { color: var(--accent); opacity: 0.5; }
+.updates-track .sep { color: var(--accent); opacity: 0.5; flex-shrink: 0; }
 @keyframes ticker {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
