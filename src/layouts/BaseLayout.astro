@@ -85,26 +85,47 @@ const base = "/iftekheriftu";
 <style is:global>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* ── DARK THEME (default) ── */
   :root {
     --bg: #080808;
     --bg2: #111111;
-    --bg3: #181818;
+    --bg3: #1a1a1a;
     --text: #f0ece4;
     --muted: #888880;
     --accent: #c8f560;
     --accent2: #9fd43a;
     --accent3: #a8e060;
     --border: #2a2a2a;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    --shadow: rgba(0,0,0,0.4);
+    --img-filter: grayscale(20%) brightness(0.9);
+    --nav-bg: rgba(8,8,8,0.88);
+    --dot-color: rgba(255,255,255,0.035);
+  }
+
+  /* ── LIGHT THEME ── */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f7f5f0;
+      --bg2: #eeecea;
+      --bg3: #e4e2de;
+      --text: #1a1a18;
+      --muted: #6b6b65;
+      --accent: #4a8c0f;
+      --accent2: #3a7008;
+      --accent3: #5a9e1a;
+      --border: #d0cec8;
+      --shadow: rgba(0,0,0,0.1);
+      --img-filter: grayscale(10%) brightness(1.02);
+      --nav-bg: rgba(247,245,240,0.92);
+      --dot-color: rgba(0,0,0,0.06);
+    }
   }
 
   html { scroll-behavior: smooth; }
 
   body {
     background-color: var(--bg);
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, var(--dot-color) 1px, transparent 0);
     background-size: 28px 28px;
     color: var(--text);
     font-family: var(--font-mono);
@@ -113,63 +134,58 @@ const base = "/iftekheriftu";
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     position: relative;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
   }
 
-  /* Subtle corner glow blobs */
   body::before {
     content: '';
     position: fixed;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(200, 245, 96, 0.04) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,245,96,0.04) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
   }
   body::after {
     content: '';
     position: fixed;
-    bottom: -200px;
-    left: -200px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(200, 245, 96, 0.03) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+    bottom: -200px; left: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(200,245,96,0.03) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  @media (prefers-color-scheme: light) {
+    body::before {
+      background: radial-gradient(circle, rgba(74,140,15,0.06) 0%, transparent 70%);
+    }
+    body::after {
+      background: radial-gradient(circle, rgba(74,140,15,0.04) 0%, transparent 70%);
+    }
   }
 
   main, nav, footer { position: relative; z-index: 1; }
 
   ::selection { background: var(--accent); color: var(--bg); }
 
+  /* ── NAV ── */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 1.25rem 2.5rem;
-    background: rgba(8,8,8,0.88);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
     font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.02em;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--accent); text-decoration: none; letter-spacing: 0.02em;
   }
   nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
   nav ul a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
     transition: color 0.2s;
   }
   nav ul a:hover { color: var(--text); }
@@ -182,13 +198,8 @@ const base = "/iftekheriftu";
   .nav-cta:hover { background: var(--accent) !important; color: var(--bg) !important; }
 
   .nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
   }
   .nav-toggle span {
     display: block; width: 22px; height: 1.5px;
@@ -199,15 +210,12 @@ const base = "/iftekheriftu";
   .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 
   .mobile-menu {
-    display: none;
-    position: fixed;
+    display: none; position: fixed;
     top: 62px; left: 0; right: 0;
     background: var(--bg2);
     border-bottom: 1px solid var(--border);
-    z-index: 99;
-    flex-direction: column;
-    padding: 1.5rem 2.5rem;
-    gap: 1.25rem;
+    z-index: 99; flex-direction: column;
+    padding: 1.5rem 2.5rem; gap: 1.25rem;
   }
   .mobile-menu.open { display: flex; }
   .mobile-link {
@@ -223,11 +231,10 @@ const base = "/iftekheriftu";
 
   main { padding-top: 62px; }
 
+  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
-    padding: 2rem 2.5rem;
-    margin-top: 6rem;
-    background: rgba(8,8,8,0.6);
+    padding: 2rem 2.5rem; margin-top: 6rem;
   }
   .footer-inner {
     max-width: 1100px; margin: 0 auto;
@@ -243,6 +250,7 @@ const base = "/iftekheriftu";
   }
   .footer-links a:hover { color: var(--accent); }
 
+  /* ── UTILITIES ── */
   .section-label {
     font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--accent); display: block; margin-bottom: 0.75rem;
