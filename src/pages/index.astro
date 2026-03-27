@@ -41,7 +41,35 @@ const posts = (await getCollection('blog'))
 <!-- ── UPDATES ── -->
 <section class="updates-bar">
   <span class="updates-label">Latest —</span>
-  <span class="updates-text">Started as Executive, SHE at Unilever Bangladesh Limited · Completed ULIP Internship at Kalurghat Factory · Honda Y-E-S Award 2022 recipient</span>
+  <div class="updates-track-wrap">
+    <div class="updates-track">
+      <span>Started as Executive, SHE at Unilever Bangladesh Limited</span>
+      <span class="sep">·</span>
+      <span>Completed ULIP Internship at Kalurghat Factory</span>
+      <span class="sep">·</span>
+      <span>Honda Y-E-S Award 2022 recipient</span>
+      <span class="sep">·</span>
+      <span>Global Finalist — Huawei Tech4Good 2022</span>
+      <span class="sep">·</span>
+      <span>Championship — Climate Justice Energy Competition 2023</span>
+      <span class="sep">·</span>
+      <span>Published in ACS Applied Electronic Materials</span>
+      <span class="sep">·</span>
+      <!-- duplicate for seamless loop -->
+      <span>Started as Executive, SHE at Unilever Bangladesh Limited</span>
+      <span class="sep">·</span>
+      <span>Completed ULIP Internship at Kalurghat Factory</span>
+      <span class="sep">·</span>
+      <span>Honda Y-E-S Award 2022 recipient</span>
+      <span class="sep">·</span>
+      <span>Global Finalist — Huawei Tech4Good 2022</span>
+      <span class="sep">·</span>
+      <span>Championship — Climate Justice Energy Competition 2023</span>
+      <span class="sep">·</span>
+      <span>Published in ACS Applied Electronic Materials</span>
+      <span class="sep">·</span>
+    </div>
+  </div>
 </section>
 
 <!-- ── EXPERIENCE ── -->
@@ -576,6 +604,49 @@ const posts = (await getCollection('blog'))
   .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
   .section { padding: 4rem 1.5rem; }
-  .updates-bar { padding: 0.85rem 1.5rem; }
+  .updates-bar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 0;
+}
+.updates-label {
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+  padding: 0 1.5rem;
+  border-right: 1px solid var(--border);
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+.updates-track-wrap {
+  overflow: hidden;
+  flex: 1;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+.updates-track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: max-content;
+  animation: ticker 30s linear infinite;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.updates-track:hover { animation-play-state: paused; }
+.updates-track span { white-space: nowrap; }
+.updates-track .sep { color: var(--accent); opacity: 0.5; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 }
 </style>
